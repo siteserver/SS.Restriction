@@ -61,6 +61,7 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Core\RestrictionManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
@@ -69,9 +70,7 @@
     <None Include="README.md" />
     <None Include="SS.Restriction.nuspec" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="logo.svg" />
   </ItemGroup>
