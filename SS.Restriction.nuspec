@@ -1,19 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
-<package 
-  xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+<?xml version="1.0"?>
+<package>
   <metadata>
     <id>SS.Restriction</id>
-    <version>1.0</version>
+    <version>$version$</version>
+    <title>后台访问限制插件</title>
     <authors>SiteServer CMS</authors>
-    <owners>SiteServer CMS</owners>
-    <projectUrl>http://www.siteserver.cn</projectUrl>
-    <iconUrl>logo.svg</iconUrl>
+    <licenseUrl>https://github.com/siteserver/SS.Restriction/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/siteserver/SS.Restriction</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <iconUrl>https://github.com/siteserver/SS.Restriction/raw/master/logo.png</iconUrl>
     <description>SiteServer CMS 后台访问限制插件，设置后台访问IP地址黑名单以及白名单，增强CMS系统后台安全性</description>
-    <dependencies>
-      <dependency id="SiteServer.Plugin" version="1.0.6" />
-    </dependencies>
-    <files>
-      <file src="*.dll" target="lib" />
-    </files>
+    <copyright>Copyright © SiteServer CMS 2018</copyright>
+    <tags>SiteServer CMS Plugin</tags>
   </metadata>
 </package>

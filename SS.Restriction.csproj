@@ -36,6 +36,9 @@
     <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SiteServer.Plugin, Version=1.1.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SiteServer.Plugin.1.1.4\lib\net461\SiteServer.Plugin.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
@@ -62,6 +65,7 @@
   <ItemGroup>
     <None Include=".gitignore" />
     <None Include="LICENSE" />
+    <None Include="packages.config" />
     <None Include="README.md" />
     <None Include="SS.Restriction.nuspec" />
   </ItemGroup>
@@ -70,12 +74,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.svg" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\SiteServer.Plugin\SiteServer.Plugin.csproj">
-      <Project>{8451ecdd-2ea4-4966-bb0a-7bbc40138e80}</Project>
-      <Name>SiteServer.Plugin</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
