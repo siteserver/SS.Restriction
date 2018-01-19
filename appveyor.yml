@@ -67,5 +67,11 @@
 
   skip_tags: true
 
+  cache:
+    - packages -> **\packages.config
+
+  before_build:
+    - nuget restore SS.Restriction.sln
+
   build:
     project: SS.Restriction.sln       # path to Visual Studio solution or project
