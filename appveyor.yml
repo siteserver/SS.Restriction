@@ -1,31 +1,65 @@
-version: 1.0.{build}
+# configuration for "master" branch
+-
+  branches:
+    only:
+      - master
 
-assembly_info:
-  patch: true
-  file: AssemblyInfo.*
-  assembly_version: "{version}"
-  assembly_file_version: "{version}"
-  assembly_informational_version: "{version}"
+  version: 1.0.{build}
 
-platform: Any CPU
+  assembly_info:
+    patch: true
+    file: AssemblyInfo.*
+    assembly_version: "{version}"
+    assembly_file_version: "{version}"
+    assembly_informational_version: "{version}"
 
-configuration:
-  - Release
+  platform: Any CPU
 
-environment:
-  TreatWarningsAsErrors: false
+  configuration:
+    - Release
 
-skip_tags: true
+  environment:
+    TreatWarningsAsErrors: false
 
-build:
-  project: SS.Restriction.sln       # path to Visual Studio solution or project
-  publish_nuget: true
+  skip_tags: true
 
-deploy:
-  provider: NuGet
-  server:                  # remove to push to NuGet.org
-  api_key:
-    secure: cKpWZvlfFA7EfagAXc/mZfTGHXxfoKNOYTQd6v4ImalbNV1mtNR55M2HMJJ4jCAo
-  skip_symbols: false
-  symbol_server:           # remove to push symbols to SymbolSource.org
-  artifact: /.*\.nupkg/
+  build:
+    project: SS.Restriction.sln       # path to Visual Studio solution or project
+    publish_nuget: true
+
+  deploy:
+    provider: NuGet
+    server:                  # remove to push to NuGet.org
+    api_key:
+      secure: cKpWZvlfFA7EfagAXc/mZfTGHXxfoKNOYTQd6v4ImalbNV1mtNR55M2HMJJ4jCAo
+    skip_symbols: false
+    symbol_server:           # remove to push symbols to SymbolSource.org
+    artifact: /.*\.nupkg/
+
+# configuration for "dev" branch
+-
+  branches:
+    only:
+      - dev
+
+  version: 1.1.{build}
+
+  assembly_info:
+    patch: true
+    file: AssemblyInfo.*
+    assembly_version: "{version}"
+    assembly_file_version: "{version}"
+    assembly_informational_version: "{version}"
+
+  platform: Any CPU
+
+  configuration:
+    - Release
+
+  environment:
+    TreatWarningsAsErrors: false
+
+  skip_tags: true
+
+  build:
+    project: SS.Restriction.sln       # path to Visual Studio solution or project
