@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Web;
 using SiteServer.Plugin;
 using SiteServer.Plugin.Features;
-using SiteServer.Plugin.Models;
 using SS.Restriction.Core;
 using SS.Restriction.Model;
 
@@ -15,7 +14,7 @@ namespace SS.Restriction
 
         public const string Permission = "";
 
-        public static IPluginContext Context { get; set; }
+        public static IContext Context { get; set; }
 
         public static void SetConfig(Config config)
         {
@@ -28,7 +27,7 @@ namespace SS.Restriction
             return _config;
         }
 
-        public override Action<IPluginContext> PluginActive => context =>
+        public override Action<IContext> PluginActive => context =>
         {
             Context = context;
             _config = Context.ConfigApi.GetConfig<Config>(0) ?? new Config
@@ -47,7 +46,7 @@ namespace SS.Restriction
             }
         };
 
-        public override PluginMenu PluginMenu
+        public override Menu PluginMenu
         {
             get
             {
@@ -59,22 +58,22 @@ namespace SS.Restriction
                     HttpContext.Current.Response.End();
                     return null;
                 }
-                return new PluginMenu
+                return new Menu
                 {
                     Text = "后台访问限制",
-                    Menus = new List<PluginMenu>
+                    Menus = new List<Menu>
                     {
-                        new PluginMenu
+                        new Menu
                         {
                             Text = "黑名单",
                             Href = "PageList.aspx?type=Black"
                         },
-                        new PluginMenu
+                        new Menu
                         {
                             Text = "白名单",
                             Href = "PageList.aspx?type=White"
                         },
-                        new PluginMenu
+                        new Menu
                         {
                             Text = "访问限制选项",
                             Href = "PageOptions.aspx"
