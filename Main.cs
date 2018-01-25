@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Web;
 using SiteServer.Plugin;
-using SiteServer.Plugin.Features;
 using SS.Restriction.Core;
 using SS.Restriction.Model;
 
 namespace SS.Restriction
 {
-    public class Main : PluginBase, IMenu
+    public class Main : IPlugin
     {
         private static Config _config;
 
@@ -16,18 +14,7 @@ namespace SS.Restriction
 
         public static IContext Context { get; set; }
 
-        public static void SetConfig(Config config)
-        {
-            _config = config;
-            Context.ConfigApi.SetConfig(0, config);
-        }
-
-        public static Config GetConfig()
-        {
-            return _config;
-        }
-
-        public override Action<IContext> PluginActive => context =>
+        public void Startup(IContext context, IService service)
         {
             Context = context;
             _config = Context.ConfigApi.GetConfig<Config>(0) ?? new Config
@@ -44,9 +31,22 @@ namespace SS.Restriction
             {
                 _config.IpWhiteList = string.Empty;
             }
-        };
 
-        public override Menu PluginMenu
+            service.AddPluginMenu(PluginMenu);
+        }
+
+        public static void SetConfig(Config config)
+        {
+            _config = config;
+            Context.ConfigApi.SetConfig(0, config);
+        }
+
+        public static Config GetConfig()
+        {
+            return _config;
+        }
+
+        public Menu PluginMenu
         {
             get
             {
