@@ -48,7 +48,7 @@
     only:
       - dev
 
-  version: 1.1.{build}
+  version: 1.1.{build}-beta
 
   assembly_info:
     patch: true
@@ -75,3 +75,16 @@
 
   build:
     project: SS.Restriction.sln       # path to Visual Studio solution or project
+    publish_nuget: true
+
+  artifacts:
+    - path: '*.nupkg'
+
+  deploy:
+    - provider: NuGet
+      server: https://www.myget.org/F/siteserver/api/v2/package                 # remove to push to NuGet.org
+      api_key:
+        secure: i9vISdFyCeWbRUQw+jhcF748i4oWdeatGBrx+dJ07SDTpt7Hsk9YCRp/ha3ZXfZF
+      skip_symbols: false
+      symbol_server:           # remove to push symbols to SymbolSource.org
+      artifact: /.*\.nupkg/
