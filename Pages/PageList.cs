@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using SiteServer.Plugin;
 using SS.Restriction.Model;
 
 namespace SS.Restriction.Pages
@@ -22,7 +23,7 @@ namespace SS.Restriction.Pages
 
         public void Page_Load(object sender, EventArgs e)
         {
-            if (!Main.Context.AdminApi.IsPluginAuthorized)
+            if (!Main.Instance.AdminApi.IsPluginAuthorized)
             {
                 HttpContext.Current.Response.Write("<h1>未授权访问</h1>");
                 HttpContext.Current.Response.End();
@@ -50,7 +51,7 @@ namespace SS.Restriction.Pages
                         list.Remove(restriction);
                         _config.IpWhiteList = string.Join(",", list.ToArray());
                     }
-                    Main.SetConfig(_config);
+                    Main.Instance.SetConfig(_config);
                 }
                 else if (!string.IsNullOrEmpty(Request.QueryString["edit"]))
                 {
@@ -145,7 +146,7 @@ setTimeout(function() {
                     _config.IpWhiteList = string.Join(",", list.ToArray());
                 }
 
-                Main.SetConfig(_config);
+                Main.Instance.SetConfig(_config);
 
                 LtlScript.Text =
                     $"<script>location.href='PageList.aspx?v={new Random().Next(1000)}&type={_type}'</script>";
@@ -174,7 +175,7 @@ setTimeout(function() {
                         _config.IpWhiteList = string.Join(",", list.ToArray());
                     }
 
-                    Main.SetConfig(_config);
+                    Main.Instance.SetConfig(_config);
 
                     LtlScript.Text =
                         $"<script>location.href='PageList.aspx?v={new Random().Next(1000)}&type={_type}'</script>";

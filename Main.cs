@@ -6,18 +6,17 @@ using SS.Restriction.Model;
 
 namespace SS.Restriction
 {
-    public class Main : IPlugin
+    public class Main : PluginBase
     {
         private static Config _config;
 
         public const string Permission = "";
 
-        public static IContext Context { get; set; }
+        public static Main Instance { get; private set; }
 
-        public void Startup(IContext context, IService service)
+        public override void Startup(IService service)
         {
-            Context = context;
-            _config = Context.ConfigApi.GetConfig<Config>(0) ?? new Config
+            _config = ConfigApi.GetConfig<Config>(0) ?? new Config
             {
                 IpRestrictionType = ERestrictionTypeUtils.GetValue(ERestrictionType.None),
                 IpBlackList = string.Empty,
@@ -33,12 +32,14 @@ namespace SS.Restriction
             }
 
             service.AddPluginMenu(PluginMenu);
+
+            Instance = this;
         }
 
-        public static void SetConfig(Config config)
+        public void SetConfig(Config config)
         {
             _config = config;
-            Context.ConfigApi.SetConfig(0, config);
+            ConfigApi.SetConfig(0, config);
         }
 
         public static Config GetConfig()
