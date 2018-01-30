@@ -3,6 +3,7 @@ using System.Web;
 using SiteServer.Plugin;
 using SS.Restriction.Core;
 using SS.Restriction.Model;
+using SS.Restriction.Pages;
 
 namespace SS.Restriction
 {
@@ -62,22 +63,23 @@ namespace SS.Restriction
                 return new Menu
                 {
                     Text = "后台访问限制",
+                    Href = $"{nameof(PageOptions)}.aspx",
                     Menus = new List<Menu>
                     {
                         new Menu
                         {
                             Text = "黑名单",
-                            Href = "PageList.aspx?type=Black"
+                            Href = $"{nameof(PageList)}.aspx?type=Black"
                         },
                         new Menu
                         {
                             Text = "白名单",
-                            Href = "PageList.aspx?type=White"
+                            Href = $"{nameof(PageList)}.aspx?type=White"
                         },
                         new Menu
                         {
                             Text = "访问限制选项",
-                            Href = "PageOptions.aspx"
+                            Href = $"{nameof(PageOptions)}.aspx"
                         }
                     }
                 };
