@@ -1,6 +1,21 @@
-# siteserver.restriction
-SiteServer CMS 后台访问限制插件
+# 后台访问限制插件概述
 
-# 测试运行
+通过黑白名单限制访问后台的IP段。
 
-nuget pack SS.Restriction.csproj -properties Configuration=Release
+### 使用说明
+
+* 首先选择访问限制选项进行访问限制设置
+
+![](assets/20180201150220.png)
+
+* 这里以启用黑名单为例设置管理后台访问限制，管理后台域名限制选择设置,管理后台访问域名填写127.0.0.1
+
+![](assets/20180201155600.png)
+
+* 黑名单列表中添加IP访问限制IP 127.0.0.1
+
+![](assets/20180201162937.png)
+
+使用127.0.0.1访问后台就会提示禁止访问，证明访问限制设置成功
+
+![](assets/20180201160034.png)
