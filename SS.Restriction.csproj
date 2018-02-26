@@ -36,8 +36,8 @@
     <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SiteServer.Plugin, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\SiteServer.Plugin.1.3.0\lib\net45\SiteServer.Plugin.dll</HintPath>
+    <Reference Include="SiteServer.Plugin, Version=1.3.39.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\SiteServer.Plugin.1.3.39-beta\lib\net45\SiteServer.Plugin.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -74,12 +74,13 @@
     <None Include="assets\plugin-utils\fonts\ionicons.eot" />
     <None Include="assets\plugin-utils\fonts\ionicons.ttf" />
     <None Include="assets\plugin-utils\fonts\ionicons.woff" />
-    <None Include="LICENSE" />
     <None Include="packages.config" />
-    <None Include="README.md" />
-    <None Include="SS.Restriction.nuspec" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\20180201150220.png" />
+    <Content Include="assets\20180201155600.png" />
+    <Content Include="assets\20180201160034.png" />
+    <Content Include="assets\20180201162937.png" />
     <Content Include="assets\plugin-utils\css\bootstrap.min.css" />
     <Content Include="assets\plugin-utils\css\font-awesome.min.css" />
     <Content Include="assets\plugin-utils\css\ionicons.min.css" />
@@ -89,8 +90,6 @@
     <Content Include="assets\plugin-utils\js\bootstrap.min.js" />
     <Content Include="assets\plugin-utils\js\jquery.min.js" />
     <Content Include="assets\plugin-utils\js\plugin-utils.js" />
-    <Content Include="logo.png" />
-    <Content Include="logo.svg" />
     <Content Include="PageList.aspx" />
     <Content Include="PageOptions.aspx" />
   </ItemGroup>
