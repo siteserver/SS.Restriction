@@ -62,5 +62,5 @@ SiteServer CMS 后台访问限制插件安装好之后，在 “插件管理” 
 
 ![](/assets/07.jpg)
 
-+ **关闭IP限制功能：**修改成："IpRestrictionType":"None”，就可以把IP限制的功能关闭；
++ **关闭IP限制功能：**修改成："IpRestrictionType":"None”，就可以把IP限制的功能关闭；
 + **关闭域名访问限制功能：**修改成："IsHostRestriction":"false"，就可以把域名访问限制功能关闭。
