@@ -77,6 +77,12 @@
     <None Include="SS.Restriction.nuspec" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\02.jpg" />
+    <Content Include="assets\03.jpg" />
+    <Content Include="assets\04.jpg" />
+    <Content Include="assets\05.jpg" />
+    <Content Include="assets\06.jpg" />
+    <Content Include="assets\07.jpg" />
     <Content Include="assets\20180201150220.png" />
     <Content Include="assets\20180201155600.png" />
     <Content Include="assets\20180201160034.png" />
