@@ -8,7 +8,7 @@
     <owners>siteserver</owners>
     <licenseUrl>https://github.com/siteserver/SS.Restriction/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/siteserver/SS.Restriction</projectUrl>
-    <iconUrl>https://github.com/siteserver/SS.Restriction/raw/master/logo.png</iconUrl>
+    <iconUrl>http://plugins.siteserver.cn/ss.restriction/logo.svg</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <releaseNotes>Bug fixes and performance improvements</releaseNotes>
     <description>SiteServer CMS 后台访问限制插件，设置后台访问IP地址黑名单以及白名单，增强CMS系统后台安全性</description>
