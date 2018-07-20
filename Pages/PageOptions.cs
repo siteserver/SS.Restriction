@@ -18,7 +18,7 @@ namespace SS.Restriction.Pages
 
         public void Page_Load(object sender, EventArgs e)
         {
-            if (!Main.Instance.AdminApi.IsPluginAuthorized)
+            if (!Main.Instance.AdminApi.HasSystemPermissions(Main.Instance.Id))
             {
                 HttpContext.Current.Response.Write("<h1>未授权访问</h1>");
                 HttpContext.Current.Response.End();
