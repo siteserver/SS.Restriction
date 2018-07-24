@@ -32,7 +32,7 @@ namespace SS.Restriction
                 _config.IpWhiteList = string.Empty;
             }
 
-            service.AddPluginMenu(PluginMenu);
+            service.AddSystemMenu(PluginMenu);
 
             Instance = this;
         }
