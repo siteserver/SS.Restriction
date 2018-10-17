@@ -9,15 +9,17 @@ namespace SS.Restriction
 {
     public class Main : PluginBase
     {
+        public static string PluginId { get; private set; }
+
         private static Config _config;
 
         public const string Permission = "";
 
-        public static Main Instance { get; private set; }
-
         public override void Startup(IService service)
         {
-            _config = ConfigApi.GetConfig<Config>(0) ?? new Config
+            PluginId = Id;
+
+            _config = Context.ConfigApi.GetConfig<Config>(PluginId, 0) ?? new Config
             {
                 IpRestrictionType = ERestrictionTypeUtils.GetValue(ERestrictionType.None),
                 IpBlackList = string.Empty,
@@ -33,14 +35,12 @@ namespace SS.Restriction
             }
 
             service.AddSystemMenu(PluginMenu);
-
-            Instance = this;
         }
 
-        public void SetConfig(Config config)
+        public static void SetConfig(Config config)
         {
             _config = config;
-            ConfigApi.SetConfig(0, config);
+            Context.ConfigApi.SetConfig(PluginId, 0, config);
         }
 
         public static Config GetConfig()

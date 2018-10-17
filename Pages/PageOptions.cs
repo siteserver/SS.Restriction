@@ -18,7 +18,7 @@ namespace SS.Restriction.Pages
 
         public void Page_Load(object sender, EventArgs e)
         {
-            if (!Main.Instance.AdminApi.HasSystemPermissions(Main.Instance.Id))
+            if (!SiteServer.Plugin.Context.Request.AdminPermissions.HasSystemPermissions(Main.PluginId))
             {
                 HttpContext.Current.Response.Write("<h1>未授权访问</h1>");
                 HttpContext.Current.Response.End();
@@ -80,7 +80,7 @@ namespace SS.Restriction.Pages
 
             try
             {
-                Main.Instance.SetConfig(_config);
+                Main.SetConfig(_config);
 
                 LtlMessage.Text = @"<div class=""alert alert-primary"" role=""alert"">访问限制选项修改成功！</div>";
             }
