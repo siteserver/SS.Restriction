@@ -13,8 +13,6 @@ namespace SS.Restriction
 
         private static Config _config;
 
-        public const string Permission = "";
-
         public override void Startup(IService service)
         {
             PluginId = Id;
@@ -34,23 +32,7 @@ namespace SS.Restriction
                 _config.IpWhiteList = string.Empty;
             }
 
-            service.AddSystemMenu(PluginMenu);
-        }
-
-        public static void SetConfig(Config config)
-        {
-            _config = config;
-            Context.ConfigApi.SetConfig(PluginId, 0, config);
-        }
-
-        public static Config GetConfig()
-        {
-            return _config;
-        }
-
-        public Menu PluginMenu
-        {
-            get
+            service.AddSystemMenu(() =>
             {
                 var isAllowed = RestrictionManager.IsVisitAllowed(_config);
                 if (!isAllowed)
@@ -83,7 +65,18 @@ namespace SS.Restriction
                         }
                     }
                 };
-            }
+            });
+        }
+
+        public static void SetConfig(Config config)
+        {
+            _config = config;
+            Context.ConfigApi.SetConfig(PluginId, 0, config);
+        }
+
+        public static Config GetConfig()
+        {
+            return _config;
         }
     }
 }

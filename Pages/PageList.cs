@@ -22,14 +22,15 @@ namespace SS.Restriction.Pages
 
         public void Page_Load(object sender, EventArgs e)
         {
-            if (!SiteServer.Plugin.Context.Request.AdminPermissions.HasSystemPermissions(Main.PluginId))
+            var request = SiteServer.Plugin.Context.GetCurrentRequest();
+            if (!request.AdminPermissions.HasSystemPermissions(Main.PluginId))
             {
                 HttpContext.Current.Response.Write("<h1>未授权访问</h1>");
                 HttpContext.Current.Response.End();
                 return;
             }
 
-            _type = Request.QueryString["type"];
+            _type = request.GetQueryString("type");
             _config = Main.GetConfig();
 
             if (!IsPostBack)
