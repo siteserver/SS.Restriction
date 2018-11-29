@@ -15,4 +15,8 @@
     <copyright>Copyright ©2018 SiteServer CMS</copyright>
     <tags>SiteServer CMS Restriction Plugin</tags>
   </metadata>
+    <files>
+    <file src="assets\fonts\**" target="Content\assets\fonts"/>
+    <file src="docs\**" target="Content\docs"/>
+  </files>
 </package>
