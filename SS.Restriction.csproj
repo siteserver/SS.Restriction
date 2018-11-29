@@ -76,6 +76,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="assets\fonts\fontawesome-webfont.eot" />
+    <None Include="assets\fonts\fontawesome-webfont.ttf" />
+    <None Include="assets\fonts\fontawesome-webfont.woff" />
+    <None Include="assets\fonts\fontawesome-webfont.woff2" />
+    <None Include="assets\fonts\FontAwesome.otf" />
     <None Include="assets\plugin-utils\fonts\fontawesome-webfont.eot" />
     <None Include="assets\plugin-utils\fonts\fontawesome-webfont.ttf" />
     <None Include="assets\plugin-utils\fonts\fontawesome-webfont.woff" />
@@ -84,20 +89,47 @@
     <None Include="assets\plugin-utils\fonts\ionicons.eot" />
     <None Include="assets\plugin-utils\fonts\ionicons.ttf" />
     <None Include="assets\plugin-utils\fonts\ionicons.woff" />
+    <None Include="docs\error.md" />
+    <None Include="docs\README.md" />
+    <None Include="docs\usage.md" />
+    <None Include="docs\_sidebar.md" />
     <None Include="packages.config" />
     <None Include="SS.Restriction.nuspec" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="assets\02.jpg" />
-    <Content Include="assets\03.jpg" />
-    <Content Include="assets\04.jpg" />
-    <Content Include="assets\05.jpg" />
-    <Content Include="assets\06.jpg" />
-    <Content Include="assets\07.jpg" />
-    <Content Include="assets\20180201150220.png" />
-    <Content Include="assets\20180201155600.png" />
-    <Content Include="assets\20180201160034.png" />
-    <Content Include="assets\20180201162937.png" />
+    <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\font-awesome-4.7.0.min.css" />
+    <Content Include="assets\css\siteserver.min.css" />
+    <Content Include="assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="assets\images\favicon.ico" />
+    <Content Include="assets\images\loading.gif" />
+    <Content Include="assets\js\list.js" />
+    <Content Include="assets\js\submit.js" />
+    <Content Include="assets\js\utils.js" />
+    <Content Include="assets\lib\axios-0.18.0.min.js" />
+    <Content Include="assets\lib\bootstrap.min.js" />
+    <Content Include="assets\lib\es6-promise.auto.min.js" />
+    <Content Include="assets\lib\jquery-1.9.1.min.js" />
+    <Content Include="assets\lib\js.cookie-2.2.0.js" />
+    <Content Include="assets\lib\layer-3.1.1\layer.js" />
+    <Content Include="assets\lib\layer-3.1.1\mobile\layer.js" />
+    <Content Include="assets\lib\layer-3.1.1\mobile\need\layer.css" />
+    <Content Include="assets\lib\layer-3.1.1\theme\default\icon-ext.png" />
+    <Content Include="assets\lib\layer-3.1.1\theme\default\icon.png" />
+    <Content Include="assets\lib\layer-3.1.1\theme\default\layer.css" />
+    <Content Include="assets\lib\layer-3.1.1\theme\default\loading-0.gif" />
+    <Content Include="assets\lib\layer-3.1.1\theme\default\loading-1.gif" />
+    <Content Include="assets\lib\layer-3.1.1\theme\default\loading-2.gif" />
+    <Content Include="assets\lib\lodash-4.17.10.min.js" />
+    <Content Include="assets\lib\md5-2.10.0.min.js" />
+    <Content Include="assets\lib\modernizr.min.js" />
+    <Content Include="assets\lib\popper.min.js" />
+    <Content Include="assets\lib\sweetalert2-7.28.4.all.min.js" />
+    <Content Include="assets\lib\vee-validate-2.1.0.js" />
+    <Content Include="assets\lib\vee-validate-locale-zh_CN-2.1.0.js" />
+    <Content Include="assets\lib\vue-2.5.16.min.js" />
+    <Content Include="assets\lib\vue-upload-component-2.8.14.js" />
+    <Content Include="assets\lib\vue2-datepicker-2.4.3.min.js" />
     <Content Include="assets\plugin-utils\css\bootstrap.min.css" />
     <Content Include="assets\plugin-utils\css\font-awesome.min.css" />
     <Content Include="assets\plugin-utils\css\ionicons.min.css" />
@@ -107,9 +139,25 @@
     <Content Include="assets\plugin-utils\js\bootstrap.min.js" />
     <Content Include="assets\plugin-utils\js\jquery.min.js" />
     <Content Include="assets\plugin-utils\js\plugin-utils.js" />
+    <Content Include="docs\assets\css\vue.css" />
+    <Content Include="docs\assets\js\docsify-4.8.6.min.js" />
+    <Content Include="docs\assets\js\search-4.8.6.min.js" />
+    <Content Include="docs\assets\readme\02.jpg" />
+    <Content Include="docs\assets\readme\03.jpg" />
+    <Content Include="docs\assets\readme\04.jpg" />
+    <Content Include="docs\assets\readme\05.jpg" />
+    <Content Include="docs\assets\readme\06.jpg" />
+    <Content Include="docs\assets\readme\07.jpg" />
+    <Content Include="docs\assets\readme\20180201150220.png" />
+    <Content Include="docs\assets\readme\20180201155600.png" />
+    <Content Include="docs\assets\readme\20180201160034.png" />
+    <Content Include="docs\assets\readme\20180201162937.png" />
+    <Content Include="docs\index.html" />
     <Content Include="logo.svg" />
     <Content Include="PageList.aspx" />
     <Content Include="PageOptions.aspx" />
+    <Content Include="Pages\settings.html" />
+    <Content Include="Pages\settings.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
