@@ -1,43 +1,38 @@
-if (window.swal) {
-  var alert = swal.mixin({
-    confirmButtonClass: 'btn btn-primary',
-    cancelButtonClass: 'btn btn-default ml-3',
-    buttonsStyling: false,
-  });
-}
-
-if (window.VeeValidate) {
-  VeeValidate.Validator.localize('zh_CN');
-  Vue.use(VeeValidate);
-  VeeValidate.Validator.localize({
-    zh_CN: {
-      messages: {
-        required: function (name) {
-          return name + '不能为空';
-        }
-      }
-    }
-  });
-  VeeValidate.Validator.extend('mobile', {
-    getMessage: function () {
-      return ' 请输入正确的手机号码';
-    },
-    validate: function (value, args) {
-      return (
-        value.length == 11 &&
-        /^((13|14|15|16|17|18|19)[0-9]{1}\d{8})$/.test(value)
-      );
-    }
-  });
-}
-
 var utils = {
+  parse: function (responseText) {
+    try {
+      return responseText ? JSON.parse(responseText) : {};
+    } catch (e) {
+      return {};
+    }
+  },
+
   getQueryString: function (name) {
-    var result = location.search.match(new RegExp("[\?\&]" + name + "=([^\&]+)", "i"));
+    var result = location.search.match(
+      new RegExp('[?&]' + name + '=([^&]+)', 'i')
+    );
     if (!result || result.length < 1) {
-      return "";
+      return '';
     }
     return decodeURIComponent(result[1]);
+  },
+
+  getQueryInt: function(name) {
+    var value = utils.getQueryString(name);
+    return value ? parseInt(value) : 0;
+  },
+
+  getPageUrl: function(fileName) {
+    var url = fileName +
+      '?pluginId=' + utils.getQueryString('pluginId') +
+      '&apiUrl=' + encodeURIComponent(utils.getQueryString('apiUrl'));
+    var siteId = utils.getQueryInt('siteId');
+    var channelId = utils.getQueryInt('channelId');
+    var contentId = utils.getQueryInt('contentId');
+    if (siteId > 0) url += '&siteId=' + siteId;
+    if (channelId > 0) url += '&channelId=' + channelId;
+    if (contentId > 0) url += '&contentId=' + contentId;
+    return url;
   },
 
   getPageAlert: function (error) {
@@ -56,28 +51,6 @@ var utils = {
     };
   },
 
-  getToken: function () {
-    return Cookies.get('SS-USER-TOKEN-CLIENT');
-  },
-
-  setToken: function (accessToken, expiresAt) {
-    Cookies.set('SS-USER-TOKEN-CLIENT', accessToken, {
-      expires: new Date(expiresAt)
-    });
-  },
-
-  removeToken: function () {
-    Cookies.remove('SS-USER-TOKEN-CLIENT');
-  },
-
-  redirectLogin: function () {
-    if (location.hash) {
-      location.href = 'pages/login.html';
-    } else {
-      top.location.hash = 'pages/login.html';
-    }
-  },
-
   loading: function (isLoading) {
     if (isLoading) {
       return layer.load(1, {
@@ -88,7 +61,7 @@ var utils = {
     }
   },
 
-  scrollToTop: function () {
+  up: function () {
     document.documentElement.scrollTop = document.body.scrollTop = 0;
   },
 
@@ -131,62 +104,35 @@ var utils = {
     for (var i = 0; i < imageUrls.length; i++) {
       var imageUrl = imageUrls[i];
       data.push({
-        "src": imageUrl, //原图地址
-        "thumb": imageUrl //缩略图地址
+        src: imageUrl, //原图地址
+        thumb: imageUrl //缩略图地址
       });
     }
     layer.photos({
       photos: {
-        "data": data
+        data: data
       },
       anim: 5
-    });
-  },
-
-  alertWarnning: function (text) {
-    alert({
-      title: "错误！",
-      text: text,
-      type: 'warning',
-      showConfirmButton: false
-    });
-  },
-
-  alertError: function (err) {
-    alert({
-      title: "系统错误！",
-      text: '请联系管理员协助解决',
-      type: 'error',
-      showConfirmButton: false,
-      closeOnClickOutside: false,
-      closeOnEsc: false
     });
   },
 
   alertDelete: function (config) {
     if (!config) return false;
 
-    alert({
-        title: config.title,
-        text: config.text,
-        type: 'warning',
-        showConfirmButton: true,
-        confirmButtonText: '确认删除',
-        confirmButtonClass: 'btn btn-danger',
-        showCancelButton: true,
-        cancelButtonText: '取 消'
-      })
-      .then(function (result) {
-        if (result.value) {
-          config.callback();
-        }
-      });
+    swal2({
+      title: config.title,
+      text: config.text,
+      type: 'question',
+      confirmButtonText: '确认删除',
+      confirmButtonClass: 'btn btn-danger',
+      showCancelButton: true,
+      cancelButtonText: '取 消'
+    }).then(function (result) {
+      if (result.value) {
+        config.callback();
+      }
+    });
 
     return false;
   }
 };
-
-var $api = axios.create({
-  baseURL: utils.getQueryString('apiUrl') + '/SS.Restriction',
-  withCredentials: true
-});

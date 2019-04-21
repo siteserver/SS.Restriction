@@ -2,22 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Web;
-using SS.Restriction.Model;
 
 namespace SS.Restriction.Core
 {
-	public class RestrictionManager
+	public static class RestrictionManager
 	{
-        private RestrictionManager()
-		{
-		}
-
-        public static bool Contains(string text, string inner)
+        private static bool Contains(string text, string inner)
         {
             return text?.IndexOf(inner, StringComparison.Ordinal) >= 0;
         }
 
-        public static int GetCount(string innerText, string content)
+        private static int GetCount(string innerText, string content)
         {
             if (innerText == null || content == null)
             {
@@ -31,7 +26,7 @@ namespace SS.Restriction.Core
             return count;
         }
 
-        public static bool IsIpAddress(string ip)
+        private static bool IsIpAddress(string ip)
         {
             return Regex.IsMatch(ip, @"^((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)$");
         }
@@ -55,8 +50,8 @@ namespace SS.Restriction.Core
                         if (result.IndexOf(",", StringComparison.Ordinal) != -1)
                         {
                             result = result.Replace("  ", "").Replace("'", "");
-                            var temparyip = result.Split(",;".ToCharArray());
-                            foreach (var t in temparyip)
+                            var temporary = result.Split(",;".ToCharArray());
+                            foreach (var t in temporary)
                             {
                                 if (IsIpAddress(t) && t.Substring(0, 3) != "10." && t.Substring(0, 7) != "192.168" && t.Substring(0, 7) != "172.16.")
                                 {
@@ -153,13 +148,13 @@ namespace SS.Restriction.Core
             return isAllowed;
         }
 
-        public static bool StartsWithIgnoreCase(string text, string startString)
+        private static bool StartsWithIgnoreCase(string text, string startString)
         {
             if (string.IsNullOrEmpty(text) || string.IsNullOrEmpty(startString)) return false;
             return text.Trim().ToLower().StartsWith(startString.Trim().ToLower()) || string.Equals(text.Trim(), startString.Trim(), StringComparison.CurrentCultureIgnoreCase);
         }
 
-        public static string RemoveProtocolFromUrl(string url)
+        private static string RemoveProtocolFromUrl(string url)
         {
             if (string.IsNullOrEmpty(url)) return string.Empty;
 
@@ -167,7 +162,7 @@ namespace SS.Restriction.Core
             return IsProtocolUrl(url) ? url.Substring(url.IndexOf("://", StringComparison.Ordinal) + 3) : url;
         }
 
-        public static bool IsProtocolUrl(string url)
+        private static bool IsProtocolUrl(string url)
         {
             if (string.IsNullOrEmpty(url)) return false;
 

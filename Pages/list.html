@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>SiteServer CMS</title>
+    <title>SiteServer CMS 短信发送插件</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
       name="viewport"
@@ -40,7 +40,7 @@
             <ul class="nav nav-pills nav-justified">
               <li class="nav-item">
                 <a
-                  class="nav-link active"
+                  class="nav-link"
                   href="javascript:;"
                   @click="{btnNavClick('settings.html')}"
                 >
@@ -50,19 +50,21 @@
               <li class="nav-item">
                 <a
                   class="nav-link"
+                  :class="{active: type === 'White'}"
                   href="javascript:;"
                   @click="{btnNavClick('list.html', 'type', 'White')}"
                 >
-                IP地址白名单
+                  IP地址白名单
                 </a>
               </li>
               <li class="nav-item">
                 <a
                   class="nav-link"
+                  :class="{active: type === 'Black'}"
                   href="javascript:;"
                   @click="{btnNavClick('list.html', 'type', 'Black')}"
                 >
-                IP地址黑名单
+                  IP地址黑名单
                 </a>
               </li>
             </ul>
@@ -85,59 +87,29 @@
             <span v-html="pageAlert.html"></span>
           </div>
 
-          <div class="form-group">
-            <label>管理后台访问IP地址限制</label>
-            <select v-model="configInfo.ipRestrictionType" class="form-control">
-              <option value="None">无访问限制</option>
-              <option value="WhiteList">
-                启用白名单，允许白名单中的IP进行访问，其余禁止访问
-              </option>
-              <option value="BlackList">
-                启用黑名单，禁止黑名单中的IP进行访问，其余允许访问
-              </option>
-            </select>
-            <small class="form-text text-muted">限制来源IP地址</small>
-          </div>
+          <table class="table tablesaw table-hover">
+            <thead>
+              <tr>
+                <th>IP访问规则</th>
+                <th width="200">操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="item in list" :key="item">
+                <td class="middle-align">
+                  {{ item }}
+                </td>
+                <td>
+                  <a href="javascript:;" @click="btnEditClick(item)">编辑</a>
+                  <a href="javascript:;" class="ml-2 text-danger" @click="btnDeleteClick(item)">删除</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
-          <div class="form-group">
-            <label>管理后台访问域名限制</label>
-            <select v-model="configInfo.isHostRestriction" class="form-control">
-              <option :value="false">无访问限制</option>
-              <option :value="true">启用访问域名限制</option>
-            </select>
-            <small class="form-text text-muted">限制后台域名地址</small>
-          </div>
-
-          <template v-if="configInfo.isHostRestriction">
-            <div class="form-group">
-              <label>
-                管理后台访问域名
-                <small v-show="errors.has('host')" class="text-danger">
-                  {{ errors.first("host") }}
-                </small>
-              </label>
-              <input
-                type="text"
-                v-model="configInfo.host"
-                name="host"
-                data-vv-as="管理后台访问域名"
-                v-validate="'required'"
-                :class="{'is-invalid': errors.has('host') }"
-                class="form-control"
-              />
-              <small class="form-text text-muted">
-                如果非80端口，后台访问域名需要包含。</small
-              >
-            </div>
-          </template>
-
-          <hr />
-
-          <div class="text-center">
-            <button class="btn btn-primary" v-on:click="btnSubmitClick">
-              保 存
-            </button>
-          </div>
+          <button class="btn btn-success" v-on:click="btnAddClick">
+              添 加
+          </button>
         </div>
       </template>
       <template v-else>
@@ -157,10 +129,10 @@
 
 <script src="../assets/lib/vee-validate/vee-validate-2.2.2.js"></script>
 <script src="../assets/lib/vee-validate/locale/zh_CN-2.2.2.js"></script>
-<script src="../assets/js/validate.js"></script>
+<script src="../assets/js/validate.js" type="text/javascript"></script>
 
 <script src="../assets/lib/sweetalert2-7.28.4.all.min.js"></script>
-<script src="../assets/js/swal2.js"></script>
+<script src="../assets/js/swal2.js" type="text/javascript"></script>
 
-<script src="../assets/js/utils.js"></script>
-<script src="settings.js"></script>
+<script src="../assets/js/utils.js" type="text/javascript"></script>
+<script src="list.js" type="text/javascript"></script>
