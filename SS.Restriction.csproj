@@ -13,7 +13,7 @@
     <Description>SiteServer CMS 后台访问限制插件，设置后台访问IP地址黑名单以及白名单，增强CMS系统后台安全性</Description>
     <PackageLicense>GPL-3.0</PackageLicense>
     <PackageProjectUrl>https://github.com/siteserver/SS.Restriction</PackageProjectUrl>
-    <PackageIconUrl>https://www.siteserver.cn/docs/SS.Restriction/logo.svg</PackageIconUrl>
+    <PackageIconUrl>https://www.siteserver.cn/docs/ss/restriction/logo.svg</PackageIconUrl>
     <Copyright>Copyright © SiteServer CMS</Copyright>
     <PackageTags>SiteServer CMS Restriction Plugin</PackageTags>
     <RepositoryUrl>https://github.com/siteserver/SS.Restriction</RepositoryUrl>
@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.7" />
-    <PackageReference Include="SiteServer.Plugin" Version="2.3.6" />
+    <PackageReference Include="SiteServer.Plugin" Version="2.3.11" />
   </ItemGroup>
 
   <ItemGroup>
